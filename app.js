@@ -1,4 +1,6 @@
 const express = require("express");
+const cors = require("cors");
+const compression = require("compression");
 const expressRateLimit = require("express-rate-limit");
 const expressMongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
@@ -9,6 +11,18 @@ const errorController = require("./controllers/errorController");
 
 // * Call Express
 const app = express();
+
+// * CORS configuration
+const allowedOrigins = ["http://localhost:3000", "https://emusoft.ai"];
+
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      if (allowedOrigins.includes(origin) || !origin) callback(null, true);
+      else callback(new Error("Not allowed by CORS!"));
+    },
+  })
+);
 
 // * API Limit
 const limit = expressRateLimit({
@@ -40,6 +54,9 @@ app.get(
 );
 
 app.use("/users", userRoutes);
+
+// * In production/deployment
+// app.use(compression());
 
 // * Global error handling
 app.use(errorController);
