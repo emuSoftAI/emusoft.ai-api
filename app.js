@@ -12,6 +12,9 @@ const errorController = require("./controllers/errorController");
 // * Call Express
 const app = express();
 
+// * In production/deployment
+// app.use(compression());
+
 // * CORS configuration
 const allowedOrigins = ["http://localhost:3000", "https://emusoft.ai"];
 
@@ -54,9 +57,6 @@ app.get(
 );
 
 app.use("/users", userRoutes);
-
-// * In production/deployment
-// app.use(compression());
 
 // * Global error handling
 app.use(errorController);
