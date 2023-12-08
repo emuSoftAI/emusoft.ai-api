@@ -6,26 +6,30 @@ const expressMongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
 const hpp = require("hpp");
 const xssClean = require("xss-clean");
+const activityRoutes = require("./routes/activityRoutes");
 const userRoutes = require("./routes/userRoutes");
 const errorController = require("./controllers/errorController");
 
 // * Call Express
 const app = express();
 
-// * In production/deployment
+// * In production
 // app.use(compression());
 
-// * CORS configuration
-const allowedOrigins = ["http://localhost:3000", "https://emusoft.ai"];
+// * CORS configuration (In production)
+// const allowedOrigins = ["http://localhost:3000", "https://emusoft.ai"];
 
-app.use(
-  cors({
-    origin: function (origin, callback) {
-      if (allowedOrigins.includes(origin) || !origin) callback(null, true);
-      else callback(new Error("Not allowed by CORS!"));
-    },
-  })
-);
+// app.use(
+//   cors({
+//     origin: function (origin, callback) {
+//       if (allowedOrigins.includes(origin) || !origin) callback(null, true);
+//       else callback(new Error("Not allowed by CORS!"));
+//     },
+//   })
+// );
+
+// * CORS Configuration (In development)
+app.use(cors({ origin: "*" }));
 
 // * API Limit
 const limit = expressRateLimit({
@@ -53,9 +57,11 @@ app.get(
       message: "Welcome to the EMUSOFT.AI API",
     })
 
+  // * After deployment
   //   res.redirect("https://emusoft.ai")
 );
 
+app.use("/activities", activityRoutes);
 app.use("/users", userRoutes);
 
 // * Global error handling
