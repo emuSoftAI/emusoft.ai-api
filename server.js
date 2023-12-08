@@ -18,14 +18,14 @@ process.on("uncaughtException", (err) => {
 dotenv.config({ path: "./config.env" });
 
 // * Database connection
-// (async () => {
-//   try {
-//     await mongoose.connect(process.env.URI);
-//     console.log("Connection to the database successful.");
-//   } catch (e) {
-//     console.error(`Connection to the database is failed. ${e}`);
-//   }
-// })();
+(async () => {
+  try {
+    await mongoose.connect(process.env.URI);
+    console.log("Connection to the database successful.");
+  } catch (e) {
+    console.error(`Connection to the database is failed. ${e}`);
+  }
+})();
 
 server.listen(process.env.PORT, () =>
   console.log(`Server is running on PORT: ${process.env.PORT}`)
