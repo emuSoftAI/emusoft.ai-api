@@ -7,7 +7,7 @@ const {
 
 const router = express.Router();
 
+router.route("/:id").get(getActivity);
 router.route("/").get(getActivities).post(createActivity);
-router.get("/:id").get(getActivity);
 
 module.exports = router;

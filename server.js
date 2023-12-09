@@ -2,7 +2,7 @@ const http = require("http");
 const app = require("./app");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-
+const logger = require("./utils/AppLog");
 // * Create server
 const server = http.createServer(app);
 
@@ -20,21 +20,23 @@ dotenv.config({ path: "./config.env" });
 // * Database connection
 (async () => {
   try {
-    await mongoose.connect(process.env.URI);
-    console.log("Connection to the database successful.");
+    await mongoose.connect(process.env.URI_DEVOPS);
+    logger.info("Database connection is stable.");
+
+    
+    
   } catch (e) {
-    console.error(`Connection to the database is failed. ${e}`);
+    logger.error(`Database connection error: ${e}`);
   }
 })();
 
 server.listen(process.env.PORT, () =>
-  console.log(`Server is running on PORT: ${process.env.PORT}`)
+  logger.info(`Server started with http://localhost:${process.env.PORT}/`)
 );
 
 // ! Unhandled Rejection Error
 process.on("unhandledRejection", (err) => {
-  console.error(err.name);
-  console.error(err.message);
-
+  logger.error(`${err.name}`)
+  logger.error(`${err.message}`)
   server.close(() => process.exit(1));
 });
