@@ -1,5 +1,5 @@
 const Activity = require('../models/Activity');
-
+const AppError = require('../utils/AppError');
 const controller = {};
 
 controller.createActivity = async (req, res, next) => {
