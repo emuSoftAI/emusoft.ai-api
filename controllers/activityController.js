@@ -40,3 +40,5 @@ exports.getActivity = async (req, res, next) => {
 };
 
 exports.updateActivity = async (req, res, next) => {};
+
+exports.deleteActivity = async (req, res, next) => {};
