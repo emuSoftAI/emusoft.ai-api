@@ -18,6 +18,11 @@ const activitySchema = new mongoose.Schema({
       trim: true,
     },
   ],
+
+  date: {
+    type: Date,
+    required: [true, "Activity date is required."],
+  },
 });
 
 const Activity = mongoose.model("Activity", activitySchema);
