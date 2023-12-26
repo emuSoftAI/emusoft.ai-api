@@ -20,6 +20,12 @@ const tutorialSchema = new mongoose.Schema(
       trim: true,
     },
 
+    images: [
+      {
+        type: String,
+      },
+    ],
+
     instructors: [
       {
         firstname: {
@@ -32,6 +38,15 @@ const tutorialSchema = new mongoose.Schema(
           type: String,
           required: [true, "The instructor's lastname is required."],
           trim: true,
+        },
+
+        title: {
+          type: String,
+          required: ["The instructor's title is required."],
+        },
+
+        company: {
+          type: String,
         },
 
         links: {
@@ -63,9 +78,11 @@ const tutorialSchema = new mongoose.Schema(
       },
     ],
 
-    images: [
+    languages: [
       {
         type: String,
+        requied: [true, "The tutorial language is required."],
+        trim: true,
       },
     ],
 
