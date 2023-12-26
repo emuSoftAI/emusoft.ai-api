@@ -60,8 +60,6 @@ const tutorialSchema = new mongoose.Schema(
             trim: true,
           },
         },
-
-        required: [true, "A tutorial must have at least one instructor."],
       },
     ],
 

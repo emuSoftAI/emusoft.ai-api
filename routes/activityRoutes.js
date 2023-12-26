@@ -5,14 +5,14 @@ const {
   createActivity,
   getActivity,
   updateActivity,
-  checkActivityId,
 } = require("../controllers/activityController");
+const { checkId } = require("../controllers/general");
 
 const router = express.Router();
 
 router.route("/").get(getActivities).post(createActivity);
 
-router.use(checkActivityId);
+router.use(checkId);
 
 router.route("/:id").get(getActivity).patch(updateActivity);
 

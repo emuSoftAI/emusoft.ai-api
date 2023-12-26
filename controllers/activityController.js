@@ -19,13 +19,6 @@ exports.getActivities = async (req, res, next) => {
 
 exports.createActivity = async (req, res, next) => {};
 
-exports.checkActivityId = async (req, res, next) => {
-  if (!req.params.id)
-    return next(new AppError(403, "fail", "Activity id is required."));
-
-  next();
-};
-
 exports.getActivity = async (req, res, next) => {
   try {
     const { id } = req.params;
