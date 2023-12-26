@@ -7,6 +7,7 @@ const helmet = require("helmet");
 const hpp = require("hpp");
 const xssClean = require("xss-clean");
 const userRoutes = require("./routes/userRoutes");
+const activityRoutes = require("./routes/activityRoutes");
 const errorController = require("./controllers/errorController");
 
 // * Call Express
@@ -54,6 +55,7 @@ app.get(
 );
 
 app.use("/users", userRoutes);
+app.use("/activities", activityRoutes);
 
 // * In production/deployment
 // app.use(compression());
