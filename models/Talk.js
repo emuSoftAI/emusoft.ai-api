@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const Talk = new mongoose.Schema({
+const talkSchema = new mongoose.Schema({
   title: {
     type: String,
     required: [true, "Tutorial title is required."],
@@ -78,6 +78,6 @@ const Talk = new mongoose.Schema({
   ],
 });
 
-const CareerTalk = mongoose.model("CareerTalk", Talk);
+const Talk = mongoose.model("Talk", talkSchema);
 
-module.exports = CareerTalk;
+module.exports = Talk;
