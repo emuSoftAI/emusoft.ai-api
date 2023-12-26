@@ -1,10 +1,12 @@
 const express = require("express");
+
 const {
   getTutorials,
   createTutorial,
   getTutorial,
   updateTutorial,
 } = require("../controllers/tutorialController");
+
 const { checkId } = require("../controllers/general");
 
 const router = express.Router();
