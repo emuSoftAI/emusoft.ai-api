@@ -17,6 +17,7 @@
   "author": "emusoft.ai",
   "license": "ISC",
   "dependencies": {
+    "aws-sdk": "^2.1525.0",
     "bcrypt": "^5.1.1",
     "compression": "^1.7.4",
     "cors": "^2.8.5",
