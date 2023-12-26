@@ -9,7 +9,7 @@ const xssClean = require("xss-clean");
 const userRoutes = require("./routes/userRoutes");
 const activityRoutes = require("./routes/activityRoutes");
 const tutorialRoutes = require("./routes/tutorialRoutes");
-const careerTalkRoutes = require("./routes/careerTalkRoutes");
+const talkRoutes = require("./routes/talkRoutes");
 const directorRoutes = require("./routes/directorRoutes");
 const errorController = require("./controllers/errorController");
 
@@ -60,7 +60,7 @@ app.get(
 app.use("/users", userRoutes);
 app.use("/activities", activityRoutes);
 app.use("/tutorials", tutorialRoutes);
-app.use("/career-talk", careerTalkRoutes);
+app.use("/talks", talkRoutes);
 app.use("/directors", directorRoutes);
 
 // * In production/deployment
