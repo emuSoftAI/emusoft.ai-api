@@ -6,5 +6,5 @@ exports.checkId = async (req, res, next) => {
       new AppError(403, "fail", "MongoDB Document Object Id is required.")
     );
 
-  next(e);
+  next();
 };
