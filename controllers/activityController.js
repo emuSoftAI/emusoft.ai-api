@@ -17,7 +17,30 @@ exports.getActivities = async (req, res, next) => {
   }
 };
 
-exports.createActivity = async (req, res, next) => {};
+exports.createActivity = async (req, res, next) => {
+  try {
+    const { title, description, thumbnail, images, location, date } = req.body;
+
+    const activity = await Activity.create({
+      title,
+      description,
+      thumbnail,
+      images,
+      location,
+      date,
+    });
+
+    res.status(201).json({
+      status: "success",
+      message: "Activity has been created successfully!",
+      data: {
+        activity,
+      },
+    });
+  } catch (e) {
+    next(e);
+  }
+};
 
 exports.getActivity = async (req, res, next) => {
   try {
