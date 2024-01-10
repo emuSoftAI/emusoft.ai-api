@@ -29,7 +29,6 @@ const activitySchema = new mongoose.Schema(
 
     location: {
       type: String,
-      required: [true, "The activity must have a location."],
     },
 
     date: {

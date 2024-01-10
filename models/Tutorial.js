@@ -88,7 +88,6 @@ const tutorialSchema = new mongoose.Schema(
 
     location: {
       type: String,
-      required: [true, "The tutorial must have a location."],
     },
 
     date: {
