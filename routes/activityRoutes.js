@@ -17,10 +17,7 @@ router.route("/").get(getActivities).post(createActivity);
 // * Center Middleware
 router.use(checkId);
 
-router
-  .route("/:id")
-  .get(getActivity)
-  .patch(updateActivity)
-  .delete(deleteActivity);
+router.route("/:id").get(getActivity).patch(updateActivity);
+// .delete(deleteActivity);
 
 module.exports = router;

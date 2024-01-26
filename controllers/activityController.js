@@ -21,6 +21,8 @@ exports.createActivity = async (req, res, next) => {
   try {
     const { title, description, thumbnail, images, location, date } = req.body;
 
+    console.log(title, description, thumbnail, images, location, date);
+
     const activity = await Activity.create({
       title,
       description,
@@ -62,6 +64,23 @@ exports.getActivity = async (req, res, next) => {
   }
 };
 
-exports.updateActivity = async (req, res, next) => {};
+exports.updateActivity = async (req, res, next) => {
+  const { id } = req.params;
 
-exports.deleteActivity = async (req, res, next) => {};
+  const activity = await Activity.findByIdAndUpdate(id, {
+    title: req.body.title,
+    description: req.body.description,
+    thumbnail: req.body.thumbnail,
+    documentation: req.body.documentation,
+  });
+
+  res.status(200).json({
+    status: "success",
+    message: "The document has been updated successfully.",
+    data: {
+      actviity,
+    },
+  });
+};
+
+// exports.deleteActivity = async (req, res, next) => {};

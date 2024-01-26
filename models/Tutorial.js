@@ -28,15 +28,9 @@ const tutorialSchema = new mongoose.Schema(
 
     instructors: [
       {
-        firstname: {
+        name: {
           type: String,
-          required: [true, "The instructor's name is required."],
-          trim: true,
-        },
-
-        lastname: {
-          type: String,
-          required: [true, "The instructor's lastname is required."],
+          required: [true, "Instructor name is required."],
           trim: true,
         },
 
@@ -81,7 +75,6 @@ const tutorialSchema = new mongoose.Schema(
     languages: [
       {
         type: String,
-        requied: [true, "The tutorial language is required."],
         trim: true,
       },
     ],

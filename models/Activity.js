@@ -8,24 +8,92 @@ const activitySchema = new mongoose.Schema(
       trim: true,
     },
 
-    desription: {
+    description: {
       type: String,
       required: [true, "Activity description is required."],
       trim: true,
     },
 
     thumbnail: {
-      type: String,
-      required: [true, "Activity must have a thumbnail."],
-      trim: true,
+      source: {
+        type: String,
+        required: [true, "Activity thumbnail is required."],
+      },
+
+      size: {
+        width: {
+          type: Number,
+          required: [true, "Thumbnail size is required."],
+        },
+
+        height: {
+          type: Number,
+          required: [true, "Thumbnail size is required."],
+        },
+      },
     },
 
     images: [
       {
-        type: String,
-        trim: true,
+        source: {
+          type: String,
+          required: [true, "Activity thumbnail is required."],
+        },
+
+        size: {
+          width: {
+            type: Number,
+            required: [true, "Image size is required."],
+          },
+
+          height: {
+            type: Number,
+            required: [true, "Image size is required."],
+          },
+        },
       },
     ],
+
+    documentation: {
+      title: {
+        type: String,
+        required: [true, "An activity title is required."],
+      },
+
+      description: {
+        type: String,
+        required: [true, "An activity description is required."],
+      },
+
+      keywords: {
+        type: [String],
+        required: [true, "An activity's must have a few keywords."],
+      },
+
+      headings: [
+        {
+          sub_title: {
+            type: String,
+            trim: true,
+          },
+
+          paragraph: {
+            type: String,
+            trim: true,
+          },
+
+          code: {
+            type: String,
+            trim: true,
+          },
+
+          images: {
+            type: String,
+            trim: true,
+          },
+        },
+      ],
+    },
 
     location: {
       type: String,
